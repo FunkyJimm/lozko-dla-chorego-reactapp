@@ -2,7 +2,7 @@ import { Component } from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
-import { API_KEY } from '../apiKey';
+import { API_KEY } from '../../apiKey';
 
 const cookies = new Cookies();
 
@@ -38,7 +38,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <p>Logowanie:</p>
+                <p>Logowanie</p>
 
                 <form onSubmit={this.handleSubmit}>
                     <label>

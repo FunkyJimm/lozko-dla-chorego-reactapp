@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 
-import { API_KEY } from '../apiKey';
+import { API_KEY } from '../../apiKey';
 
 class Ambulances extends Component {
     state = {
@@ -9,7 +9,8 @@ class Ambulances extends Component {
         ambulanceType: "S",
         ambulanceLocalization: "",
         apiKey: API_KEY,
-        errorMessage: ""
+        errorMessage: "",
+        ambulancesResponse: null
     }
 
     handleChange = e => {
@@ -26,6 +27,19 @@ class Ambulances extends Component {
                 console.log(response);
                 this.setState({
                     errorMessage: response.data
+                })
+            })
+            .catch(error => {
+                console.log(error.response)
+            })
+    }
+
+    handleShowAmbulances = () => {
+        axios.get('http://localhost:3000/ambulances')
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    ambulancesResponse: response.data
                 })
             })
             .catch(error => {
@@ -61,6 +75,11 @@ class Ambulances extends Component {
                     <br />
                     {this.state.errorMessage ? <span id="error">{this.state.errorMessage}</span> : ""}
                 </form>
+
+                <>
+                    <p>Lista ambulansów:</p>
+                    <button onClick={this.handleShowAmbulances}>Pokaż</button>
+                </>
             </div>
         )
     }

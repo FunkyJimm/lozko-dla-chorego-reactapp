@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 
-import { API_KEY } from '../apiKey';
+import { API_KEY } from '../../apiKey';
 
 class Hospitals extends Component {
     state = {
