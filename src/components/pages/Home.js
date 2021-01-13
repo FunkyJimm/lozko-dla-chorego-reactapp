@@ -6,7 +6,7 @@ import Registration from './Registration';
 function Home() {
     const [login, setLogin] = React.useState(true);
 
-    const handleRegistration = () => {
+    const toggleRegistration = () => {
         setLogin(!login);
     }
 
@@ -14,7 +14,7 @@ function Home() {
         <div>
             <h1>Łóżko dla chorego v0.1</h1>
             {login ? <Login /> : <Registration />}
-            <button onClick={handleRegistration}>
+            <button onClick={toggleRegistration}>
                 {login ? "Rejestracja" : "Logowanie"}
             </button>
         </div>

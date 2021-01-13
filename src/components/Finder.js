@@ -8,6 +8,7 @@ class Finder extends Component {
     state = {
         searchType: "userLogin",
         searchInput: "",
+        searchFilter: 2,
         apiKey: API_KEY,
         errorMessage: "",
         userResponse: null
@@ -50,11 +51,9 @@ class Finder extends Component {
     render() {
         return (
             <div>
-                <p>Wyszukaj użytkownika</p>
-
                 <form onSubmit={this.handleSubmit}>
                     <label>
-                        Wyszukaj użytkownika po:
+                        Wyszukaj po:
                         <select name="searchType"
                             onChange={this.handleSelect}>
                             <option value="userLogin">Nazwa</option>

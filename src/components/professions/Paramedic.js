@@ -44,7 +44,7 @@ const Paramedic = props => {
         setParamedicRescueTeam(e.target.value);
     }
 
-    const handleEdit = () => {
+    const toggleEdit = () => {
         setEdit(!edit);
     }
 
@@ -68,7 +68,7 @@ const Paramedic = props => {
     return (
         <div>
             {errorMessage ? <p>{errorMessage}</p> : ""}
-            {errorMessage ? <button onClick={handleEdit}>Dodaj nowego ratownika</button> : null}
+            {errorMessage ? <button onClick={toggleEdit}>Dodaj nowego ratownika</button> : null}
 
             {edit ?
                 <table>

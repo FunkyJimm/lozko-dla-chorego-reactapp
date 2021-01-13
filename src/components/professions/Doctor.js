@@ -44,7 +44,7 @@ const Doctor = props => {
         setDoctorSpecialization(e.target.value);
     }
 
-    const handleEdit = () => {
+    const toggleEdit = () => {
         setEdit(!edit);
     }
 
@@ -68,7 +68,7 @@ const Doctor = props => {
     return (
         <div>
             {errorMessage ? <p>{errorMessage}</p> : ""}
-            {errorMessage ? <button onClick={handleEdit}>Dodaj nowego lekarza</button> : null}
+            {errorMessage ? <button onClick={toggleEdit}>Dodaj nowego lekarza</button> : null}
 
             {edit ?
                 <table>

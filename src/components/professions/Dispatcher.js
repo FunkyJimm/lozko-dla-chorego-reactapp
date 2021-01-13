@@ -37,7 +37,7 @@ const Dispatcher = props => {
         setDispatcherHospital(e.target.value);
     }
 
-    const handleEdit = () => {
+    const toggleEdit = () => {
         setEdit(!edit);
     }
 
@@ -60,23 +60,31 @@ const Dispatcher = props => {
     return (
         <div>
             {errorMessage ? <p>{errorMessage}</p> : ""}
-            {errorMessage ? <button onClick={handleEdit}>Dodaj nowego dyspozytora</button> : null}
+            {errorMessage ? <button onClick={toggleEdit}>Dodaj nowego dyspozytora</button> : null}
 
             {edit ?
                 <table>
-                    <tr>
-                        <td>Szpital:</td>
-                        <td>
-                            <input type="text"
-                                value={dispatcherHospital}
-                                onChange={handleDispatcherHospital} />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <button onClick={handleAddDispatcher}>Zatwierdź</button>
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>Uzytkownik:</td>
+                            <td>
+                                <input type="text" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Szpital:</td>
+                            <td>
+                                <input type="text"
+                                    value={dispatcherHospital}
+                                    onChange={handleDispatcherHospital} />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button onClick={handleAddDispatcher}>Zatwierdź</button>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table> : null}
 
             {dispatcherResponse ?

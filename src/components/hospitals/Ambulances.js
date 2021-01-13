@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import { API_KEY } from '../../apiKey';
 
+import AmbulancesList from './AmbulancesList';
+
 class Ambulances extends Component {
     state = {
         ambulanceRegistrationNumber: "",
@@ -34,17 +36,28 @@ class Ambulances extends Component {
             })
     }
 
-    handleShowAmbulances = () => {
+    handleAmbulancesQuery = () => {
         axios.get('http://localhost:3000/ambulances')
             .then(response => {
                 console.log(response);
                 this.setState({
                     ambulancesResponse: response.data
                 })
+                this.toggleAmbulancesList();
             })
             .catch(error => {
                 console.log(error.response)
             })
+    }
+
+    toggleAmbulancesList = () => {
+        console.log(this.state.ambulancesResponse);
+        this.state.ambulancesResponse.map(ambulance => {
+            <div key={ambulance._id}>
+                <p>{ambulance.ambulanceRegistrationNumber}</p>
+                <p>{ambulance.ambulanceType}</p>
+            </div>
+        })
     }
 
     render() {
@@ -78,7 +91,9 @@ class Ambulances extends Component {
 
                 <>
                     <p>Lista ambulansów:</p>
-                    <button onClick={this.handleShowAmbulances}>Pokaż</button>
+                    <button onClick={this.handleAmbulancesQuery}>Pokaż</button>
+
+                    {this.state.ambulancesResponse ? <AmbulancesList props={this.state.ambulancesResponse} /> : null}
                 </>
             </div>
         )
