@@ -1,1 +1,1 @@
-export const API_KEY = 'zaq12wsx';
+export const API_KEY = '';
